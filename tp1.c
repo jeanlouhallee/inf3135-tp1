@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<ctype.h>
 #include<stdbool.h>
 
 // ---------- //
@@ -10,6 +11,23 @@
 #define CARACTERE_VIDE '-'
 #define HAUTEUR_MAX 15
 #define LARGEUR_MAX 20
+
+//----------------------//
+// Structures de donnes //
+//----------------------//
+
+struct tabHauteurs {
+
+    int largeur;
+    int contenu[LARGEUR_MAX + 1];
+
+};
+
+struct Montagne {
+    int hauteur;
+    int largeur;
+    char contenu[LARGEUR_MAX][HAUTEUR_MAX];
+};
 
 // ---------- //
 // Prototypes //
@@ -69,10 +87,10 @@ void creerTableauHauteurs(char *valeurArgv[]){
     char *rep;
     int i = 0;
     int tab[LARGEUR_MAX];
-
-    rep = strtok(valeurArgv[4],",");
+    
+    rep = strtok(valeurArgv[3],",");
     while(rep != NULL && i < LARGEUR_MAX){
-        tab[i] = atoi(rep);
+        tab[i] = (int)strtol(rep,NULL,10);
         rep = strtok(NULL,",");
         printf("%d\n",tab[i]);
         i++;
