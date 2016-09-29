@@ -8,6 +8,7 @@
 // Constantes //
 //------------//
 
+#define SEPARATEUR ","
 #define CARACTERE_VIDE '-'
 #define HAUTEUR_MAX 15
 #define LARGEUR_MAX 20
@@ -72,7 +73,7 @@ int main(int argc, char *argv[]){
 //
 //
 int trouverHauteur(struct tabHauteurs *hauteurs){
-   int i = 0;
+   int i;
    int max = 0;
    int temp;
 
@@ -84,15 +85,36 @@ int trouverHauteur(struct tabHauteurs *hauteurs){
 }
 
 void afficherMontagne(struct Montagne *montagne){
-
+    int i;
+    int j;
+    for(i = montagne->hauteur ; i>= 0 ; i--){
+        for(j = 0 ; j <= montagne->largeur ; j++){
+            printf("%c",montagne->contenu[j][i]); 
+            if(j == montagne->largeur){
+                printf("\n");
+            }
+        }
+    }
 }
 
 void construireMontagne(char terre, struct tabHauteurs *hauteur, struct Montagne *montagne){
-    montagne->hauteur = trouverHauteur(hauteur);
+    int i;
+    int j;
+
+    montagne->hauteur = trouverHauteur(hauteur) - 1;
     printf("%d\n",montagne->hauteur);                                   ////////////////////
-    montagne->largeur = hauteur->largeur;
+    montagne->largeur = hauteur->largeur - 1;
     printf("%d\n",montagne->largeur);                                           ///////////////////
-    :
+    
+    for(i = 0; i <= montagne->largeur ; i++){
+        for(j = 0 ; j <= montagne->hauteur ; j++){
+            if(j < hauteur->contenu[i] ){
+                montagne->contenu[i][j] = terre;
+            }else{
+                montagne->contenu[i][j] = CARACTERE_VIDE;
+            }
+        }
+    }
 }
 
 bool verifieNbArguments(int nbArg){
@@ -129,7 +151,7 @@ bool verifierHauteurs(char *valeurArgv[], struct tabHauteurs *hauteurs){
     int nombre;
     bool resultat = true;
 
-    rep = strtok(valeurArgv[3],",");
+    rep = strtok(valeurArgv[3],SEPARATEUR);
     while(rep != NULL && i <= LARGEUR_MAX){
     
         nombre =(int) strtol(rep,NULL,10);
