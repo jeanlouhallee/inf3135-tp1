@@ -87,12 +87,19 @@ void creerTableauHauteurs(char *valeurArgv[]){
     char *rep;
     int i = 0;
     int tab[LARGEUR_MAX];
+    int nombre;
     
     rep = strtok(valeurArgv[3],",");
     while(rep != NULL && i < LARGEUR_MAX){
-        tab[i] = (int)strtol(rep,NULL,10);
+        nombre =(int) strtol(rep,NULL,10);
+        
+        if(nombre >= 0 && nombre <= 15){
+            tab[i] = nombre;
+            printf("%d\n",tab[i]);
+            i++;
+        }else{
+            printf("Hauteur invalide : la hauteur doit etre un nombre entre 0 et 15\n");
+        }
         rep = strtok(NULL,",");
-        printf("%d\n",tab[i]);
-        i++;
     }
 }
