@@ -52,13 +52,14 @@ int main(int argc, char *argv[]){
     struct Montagne montagne;
 
     if(verifieNbArguments(argc) == true){
-         printf("test\n");
+         printf("test\n");                                                  ///////
         if(sontCaracteresAcceptables(argv) == true){
             terre = argv[1][0];
             eau = argv[2][0];
             if(verifierHauteurs(argv,&hauteurs)== true){
-                printf("Largeur est : %d\n",hauteurs.largeur); 
+                printf("Largeur est : %d\n",hauteurs.largeur);                  ////////
                 construireMontagne(terre, &hauteurs, &montagne);
+                afficherMontagne(&montagne);    
             }
         }
     }
@@ -70,14 +71,14 @@ int main(int argc, char *argv[]){
 //
 //
 //
-int trouverHauteur(struct tabHauteurs *hauteur){
+int trouverHauteur(struct tabHauteurs *hauteurs){
    int i = 0;
    int max = 0;
    int temp;
 
-    for(i = 0 ; i<= hauteur->largeur - 1 ; i++){
-        temp = hauteur->contenu[i];
-        if(temp > max) max = hauteur->contenu[i];
+    for(i = 0 ; i<= hauteurs->largeur - 1 ; i++){
+        temp = hauteurs->contenu[i];
+        if(temp > max) max = hauteurs->contenu[i];
     }
     return max;
 }
@@ -87,7 +88,11 @@ void afficherMontagne(struct Montagne *montagne){
 }
 
 void construireMontagne(char terre, struct tabHauteurs *hauteur, struct Montagne *montagne){
-
+    montagne->hauteur = trouverHauteur(hauteur);
+    printf("%d\n",montagne->hauteur);                                   ////////////////////
+    montagne->largeur = hauteur->largeur;
+    printf("%d\n",montagne->largeur);                                           ///////////////////
+    :
 }
 
 bool verifieNbArguments(int nbArg){
@@ -118,7 +123,7 @@ bool sontCaracteresAcceptables(char *valeurArgv[]){
         return resultat;
 }
 
-bool verifierHauteurs(char *valeurArgv[], struct tabHauteurs *h){
+bool verifierHauteurs(char *valeurArgv[], struct tabHauteurs *hauteurs){
     char *rep;
     int i = 0;
     int nombre;
@@ -130,7 +135,7 @@ bool verifierHauteurs(char *valeurArgv[], struct tabHauteurs *h){
         nombre =(int) strtol(rep,NULL,10);
         
         if(nombre >= 0 && nombre <= HAUTEUR_MAX){
-            h->contenu[i] = nombre;
+            hauteurs->contenu[i] = nombre;
            // printf("%d\n",h.contenu[i]);
             i++;
         }else{
@@ -142,7 +147,7 @@ bool verifierHauteurs(char *valeurArgv[], struct tabHauteurs *h){
             resultat = false;
             printf("Largeur invalide : le nombre de hauteurs doit etre entre 1 et 20\n");
         }else{
-            h->largeur = i;
+            hauteurs->largeur = i;
         }
     }
     return resultat;
