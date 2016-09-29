@@ -12,14 +12,14 @@
 #define HAUTEUR_MAX 15
 #define LARGEUR_MAX 20
 
-//----------------------//
-// Structures de donnes //
-//----------------------//
+//-----------------------//
+// Structures de donnees //
+//-----------------------//
 
 struct tabHauteurs {
 
     int largeur;
-    int contenu[LARGEUR_MAX + 1];
+    int contenu[LARGEUR_MAX];
 
 };
 
@@ -35,26 +35,61 @@ struct Montagne {
 
 bool verifieNbArguments(int nbArg);
 bool sontCaracteresAcceptables(char *valeurArgv[]);
-void creerTableauHauteurs(char *valeurArgv[]);
+bool verifierHauteurs(char *valeurArgv[],struct tabHauteurs *h);
+void construireMontagne(char terre, struct tabHauteurs *hauteur, struct Montagne *montagne);
+void afficherMontagne(struct Montagne *montagne);
+int trouverHauteur(struct tabHauteurs *hauteur);
+//
+//
+//
 //
 //
 //--------------------------------------
 int main(int argc, char *argv[]){
-    char *eau;
-    char *terre;
+    char eau;
+    char terre;
+    struct tabHauteurs hauteurs;
+    struct Montagne montagne;
 
     if(verifieNbArguments(argc) == true){
          printf("test\n");
         if(sontCaracteresAcceptables(argv) == true){
-            eau = argv[1];
-            terre = argv[2];
+            terre = argv[1][0];
+            eau = argv[2][0];
+            if(verifierHauteurs(argv,&hauteurs)== true){
+                printf("Largeur est : %d\n",hauteurs.largeur); 
+                construireMontagne(terre, &hauteurs, &montagne);
+            }
         }
     }
-    creerTableauHauteurs(argv);
 }
 //--------------------------------------
 //
 //
+//
+//
+//
+//
+int trouverHauteur(struct tabHauteurs *hauteur){
+   int i = 0;
+   int max = 0;
+   int temp;
+
+    for(i = 0 ; i<= hauteur->largeur - 1 ; i++){
+        temp = hauteur->contenu[i];
+        if(temp > max) max = hauteur->contenu[i];
+    }
+    return max;
+}
+
+void afficherMontagne(struct Montagne *montagne){
+
+}
+
+void construireMontagne(char terre, struct tabHauteurs *hauteur, struct Montagne *montagne){
+
+}
+
 bool verifieNbArguments(int nbArg){
     if(nbArg < 4 || nbArg > 4){
         printf("Nombre d'arguments invalides : il en faut 3\n");
@@ -83,23 +118,32 @@ bool sontCaracteresAcceptables(char *valeurArgv[]){
         return resultat;
 }
 
-void creerTableauHauteurs(char *valeurArgv[]){
+bool verifierHauteurs(char *valeurArgv[], struct tabHauteurs *h){
     char *rep;
     int i = 0;
-    int tab[LARGEUR_MAX];
     int nombre;
-    
+    bool resultat = true;
+
     rep = strtok(valeurArgv[3],",");
-    while(rep != NULL && i < LARGEUR_MAX){
+    while(rep != NULL && i <= LARGEUR_MAX){
+    
         nombre =(int) strtol(rep,NULL,10);
         
-        if(nombre >= 0 && nombre <= 15){
-            tab[i] = nombre;
-            printf("%d\n",tab[i]);
+        if(nombre >= 0 && nombre <= HAUTEUR_MAX){
+            h->contenu[i] = nombre;
+           // printf("%d\n",h.contenu[i]);
             i++;
         }else{
+            resultat = false;
             printf("Hauteur invalide : la hauteur doit etre un nombre entre 0 et 15\n");
         }
         rep = strtok(NULL,",");
+        if(i > LARGEUR_MAX){
+            resultat = false;
+            printf("Largeur invalide : le nombre de hauteurs doit etre entre 1 et 20\n");
+        }else{
+            h->largeur = i;
+        }
     }
+    return resultat;
 }
