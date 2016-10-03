@@ -2,7 +2,8 @@
 
 ## Description
 
-.
+Premier TP dans le cadre du cours Construction et maintenance de logicielles.
+INF3135, Université du Québec à Montréal. Remise le 7 octobre à 23h59.
 
 ## Auteur
 
@@ -10,16 +11,20 @@ Jean-Lou Hallée (HALJ05129309)
 
 ## Fonctionnement
 
-.
+Ce programme prend en entrée deux caractères distincts(un pour la terre, et un pour l'eau), ainsiqu'une suite de nombres (séparés par des virgules) représentant des hauteurs. La sortie représente l'affichage d'une montagne sous forme de caractères. Les sections où l'eau devrait s'accumuler est également représentée par un caractère.
 
 ## Contenu du projet
 
-.
+*   tp1.c: Fichier source du projet contenant le code.
+*   README.md: Fichier décrivant la totalité du projet.
+*   makefile: Fichier générant la compilation à l'aide de la commande "make" et nettoyage des fichiers non désirés à l'aide de la commande "make clean".
+*   .gitignore: Permet d'ignorer ...
+*   test.bats & .gitlab.yml: Ces fichiers permettent d'exécuter automatiquement une suite de tests lors d'un ajout sur Gitlab.
 
 ## Références
 
-.
+Un grand merci à stackoverflow.com pour le soutien. 
 
 ## Statut
 
-Pas complété PENTOUTE
+Projet complété : aucun bogue reconnu pour l'instant.
