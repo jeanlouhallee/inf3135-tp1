@@ -11,7 +11,49 @@ Jean-Lou Hallée (HALJ05129309)
 
 ## Fonctionnement
 
-Ce programme prend en entrée deux caractères distincts(un pour la terre, et un pour l'eau), ainsiqu'une suite de nombres (séparés par des virgules) représentant des hauteurs. La sortie représente l'affichage d'une montagne sous forme de caractères. Les sections où l'eau devrait s'accumuler est également représentée par un caractère.
+Ce programme prend en entrée deux caractères distincts (un pour la terre, et un pour l'eau), ainsiqu'une suite de nombres (séparés par des virgules) représentant des hauteurs. La sortie représente l'affichage d'une montagne sous forme de caractères. Les sections où l'eau devrait s'accumuler est également représentée par un caractère.
+
+Voici quelques exemples d'entrées et de sorties:
+
+Entrée:
+
+./tp1 X E 1,2,5,2,0,1,3
+
+Sortie:
+
+--X----
+--X----
+--XEEEX
+-XXXEEX
+XXXXEXX
+
+Entrée:
+
+./tp1 X E 1,2,3,4,5,6
+
+Sortie:
+
+-----X
+----XX
+---XXX
+--XXXX
+-XXXXX
+XXXXXX
+
+Entrée:
+
+./tp1 A Z 5,1,1,1,5,9
+
+
+-----A
+-----A
+-----A
+-----A
+AZZZAA
+AZZZAA
+AZZZAA
+AZZZAA
+AAAAAA
 
 ## Contenu du projet
 
@@ -23,7 +65,7 @@ Ce programme prend en entrée deux caractères distincts(un pour la terre, et un
 
 ## Références
 
-Un grand merci à (https://www.stackoverflow.com) pour le soutien. 
+Un grand merci à https://www.stackoverflow.com pour le soutien. 
 
 ## Statut
 
