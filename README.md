@@ -21,11 +21,11 @@ Entrée:
 
 Sortie:
 
---X----\s\s
---X----\s\s
---XEEEX\s\s
--XXXEEX\s\s
-XXXXEXX\s\s
+--X----  
+--X----   
+--XEEEX   
+-XXXEEX   
+XXXXEXX   
 
 Entrée:
 
@@ -33,27 +33,27 @@ Entrée:
 
 Sortie:
 
------X\s\s
-----XX\s\s
----XXX\s\s
---XXXX\s\s
--XXXXX\s\s
-XXXXXX\s\s
+-----X   
+----XX   
+---XXX   
+--XXXX   
+-XXXXX   
+XXXXXX   
 
 Entrée:
 
 ./tp1 A Z 5,1,1,1,5,9
 
 
------A\s\s
------A\s\s
------A\s\s
------A\s\s
-AZZZAA\s\s
-AZZZAA\s\s
-AZZZAA\s\s
-AZZZAA\s\s
-AAAAAA\s\s
+-----A  
+-----A   
+-----A   
+-----A  
+AZZZAA   
+AZZZAA  
+AZZZAA  
+AZZZAA   
+AAAAAA   
 
 ## Contenu du projet
 
