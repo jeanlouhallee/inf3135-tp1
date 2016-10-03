@@ -40,6 +40,8 @@ bool verifierHauteurs(char *valeurArgv[],struct tabHauteurs *h);
 void construireMontagne(char terre, struct tabHauteurs *hauteur, struct Montagne *montagne);
 void afficherMontagne(struct Montagne *montagne);
 int trouverHauteur(struct tabHauteurs *hauteur);
+bool devraitContenirEau(char terre, struct Montagne *montagne, int i, int j);
+void ajouterEau(char terre, char eau, struct Montagne *montagne);
 //
 //
 //
@@ -52,14 +54,13 @@ int main(int argc, char *argv[]){
     struct tabHauteurs hauteurs;
     struct Montagne montagne;
 
-    if(verifieNbArguments(argc) == true){
-         printf("test\n");                                                  ///////
-        if(sontCaracteresAcceptables(argv) == true){
+    if(verifieNbArguments(argc)){
+        if(sontCaracteresAcceptables(argv)){
             terre = argv[1][0];
             eau = argv[2][0];
-            if(verifierHauteurs(argv,&hauteurs)== true){
-                printf("Largeur est : %d\n",hauteurs.largeur);                  ////////
+            if(verifierHauteurs(argv,&hauteurs)){
                 construireMontagne(terre, &hauteurs, &montagne);
+                ajouterEau(terre, eau, &montagne);
                 afficherMontagne(&montagne);    
             }
         }
@@ -72,6 +73,40 @@ int main(int argc, char *argv[]){
 //
 //
 //
+bool devraitContenirEau(char terre, struct Montagne *montagne, int i, int j){
+    bool droite = false;
+    bool gauche = false;
+    int copieI = i;
+    int copieJ = j;
+    if(montagne->contenu[i][j] == CARACTERE_VIDE){ 
+         for(copieI  ; copieI <= montagne->largeur ; copieI++ ){
+             if(montagne->contenu[copieI][copieJ] == terre){
+             droite = true;
+            } 
+        }
+        for(i  ; i >= 0 ; i--){
+             if(montagne->contenu[i][j] == terre){
+             gauche = true;
+            } 
+        }
+    }
+
+    return droite && gauche;
+}
+
+void ajouterEau(char terre, char eau,struct Montagne *montagne){
+    int i;
+    int j;
+    for(i = 1; i <= montagne->largeur - 1; i++){
+        for(j = 0; j <= montagne->hauteur; j++){
+            if(devraitContenirEau(terre, montagne, i , j)){
+                montagne->contenu[i][j] = eau;
+            }
+        }
+    }
+
+}
+
 int trouverHauteur(struct tabHauteurs *hauteurs){
    int i;
    int max = 0;
@@ -100,11 +135,8 @@ void afficherMontagne(struct Montagne *montagne){
 void construireMontagne(char terre, struct tabHauteurs *hauteur, struct Montagne *montagne){
     int i;
     int j;
-
     montagne->hauteur = trouverHauteur(hauteur) - 1;
-    printf("%d\n",montagne->hauteur);                                   ////////////////////
     montagne->largeur = hauteur->largeur - 1;
-    printf("%d\n",montagne->largeur);                                           ///////////////////
     
     for(i = 0; i <= montagne->largeur ; i++){
         for(j = 0 ; j <= montagne->hauteur ; j++){
@@ -119,7 +151,7 @@ void construireMontagne(char terre, struct tabHauteurs *hauteur, struct Montagne
 
 bool verifieNbArguments(int nbArg){
     if(nbArg < 4 || nbArg > 4){
-        printf("Nombre d'arguments invalides : il en faut 3\n");
+        printf("Nombre d'arguments invalides: il en faut 3\n");
         return false;
      }else{
         return true;
@@ -135,11 +167,11 @@ bool sontCaracteresAcceptables(char *valeurArgv[]){
                  printf("Les codes doivent etre distincts\n");
              }
         }else{
-            printf("Code %s invalide : il doit etre un caractere unique\n",valeurArgv[2]);
+            printf("Code %s invalide: il doit etre un caractere unique\n",valeurArgv[2]);
             resultat = false;
         }     
     }else{
-        printf("Code %s invalide : il doit etre un caractere unique\n",valeurArgv[1]);
+        printf("Code %s invalide: il doit etre un caractere unique\n",valeurArgv[1]);
         resultat = false;
     }
         return resultat;
@@ -158,16 +190,15 @@ bool verifierHauteurs(char *valeurArgv[], struct tabHauteurs *hauteurs){
         
         if(nombre >= 0 && nombre <= HAUTEUR_MAX){
             hauteurs->contenu[i] = nombre;
-           // printf("%d\n",h.contenu[i]);
             i++;
         }else{
             resultat = false;
-            printf("Hauteur invalide : la hauteur doit etre un nombre entre 0 et 15\n");
+            printf("Hauteur invalide: la hauteur doit etre un nombre entre 0 et 15\n");
         }
         rep = strtok(NULL,",");
         if(i > LARGEUR_MAX){
             resultat = false;
-            printf("Largeur invalide : le nombre de hauteurs doit etre entre 1 et 20\n");
+            printf("Largeur invalide: le nombre de hauteurs doit etre entre 1 et 20\n");
         }else{
             hauteurs->largeur = i;
         }
