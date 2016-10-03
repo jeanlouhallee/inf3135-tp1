@@ -23,7 +23,7 @@ Ce programme prend en entrée deux caractères distincts(un pour la terre, et un
 
 ## Références
 
-Un grand merci à stackoverflow.com pour le soutien. 
+Un grand merci à (https://www.stackoverflow.com) pour le soutien. 
 
 ## Statut
 
