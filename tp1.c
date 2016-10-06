@@ -1,3 +1,18 @@
+/**
+ *
+ * TP1 du cours Construction et maintenance de logiciels.
+ *
+ * Sigle du cours :INF3135
+ *
+ * Université du Québec à Montréal
+ *
+ * Auteur : Jean-Lou Hallée HALJ05129309
+ *
+ * Dernières modifications : 6 octobre 2016.
+ *
+ */
+
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -8,15 +23,23 @@
 // Constantes //
 //------------//
 
-#define SEPARATEUR ","
-#define CARACTERE_VIDE '-'
-#define HAUTEUR_MAX 15
-#define LARGEUR_MAX 20
+#define SEPARATEUR "," // Le caractère délimiteur dans la chaine de caractère des hauteurs.
+
+#define CARACTERE_VIDE '-' // Le caractère vide de la montagne (Ce n'est pas de l'eau ni de la terre).
+
+#define HAUTEUR_MAX 15 // Le nombre maximal accepté pour une hauteur.
+
+#define LARGEUR_MAX 20 // Le nombre de hauteurs maximal accepté.
 
 //-----------------------//
 // Structures de donnees //
 //-----------------------//
 
+/**
+ *
+ * Structure représentant un tableau de hauteurs, avec une largeur.
+ *
+ */
 struct tabHauteurs {
 
     int largeur;
@@ -24,6 +47,12 @@ struct tabHauteurs {
 
 };
 
+/**
+ *
+ * Structure représentant un tableu deux dimensions de caractères,
+ * ainsi qu'une largeur et une hauteur.
+ *
+ */
 struct Montagne {
     int hauteur;
     int largeur;
@@ -34,20 +63,88 @@ struct Montagne {
 // Prototypes //
 //------------//
 
+/**
+ * Cette fonction vérifie le nombre d'arguments passés en paramètres.
+ *
+ * @param nbArg, le nombre d'arguments (argc).
+ *
+ * @return vrai si le nombre d'arguments est 3, faux sinon.
+ */
 bool verifieNbArguments(int nbArg);
+
+/**
+ * Cette fonction vérifie que les caractères 'terre' et 'eau' soient acceptables.
+ *
+ * @param valeurArgv, un "tableau de tableaux" contenant des caractères (pointeurs).
+ *
+ * @return vrai si les caractères sont acceptables, faux sinon.
+ */
 bool sontCaracteresAcceptables(char *valeurArgv[]);
+
+/**
+ * Cette fonction s'assure que les hauteurs respectent les conditions 
+ * (1 à 20 hauteurs entre 0 et 15).
+ *
+ * @param valeurArgv, un tableau de tableaux contenant des caratères.
+ * @param tabHauteurs, un pointeur vers une structure représentant un tableau de hauteurs.
+ *
+ * @return true si les hauteurs remplissent les conditions, faux sinon.
+ */
 bool verifierHauteurs(char *valeurArgv[],struct tabHauteurs *h);
+
+/**
+ * Cette fonction construit la montagne; "caractères terre" et "caractères vide" seulement.
+ *
+ * @param terre, le caractère représentant la terre de la montagne.
+ * @param tabHauteurs, un pointeur vers une structures représentant un tableau de hauteurs.
+ * @param montagne, un pointeur vers une structure représentant les caractéristiques
+ *  de la montagne.
+ *
+ * @return void.
+ */
 void construireMontagne(char terre, struct tabHauteurs *hauteur, struct Montagne *montagne);
+
+/**
+ * Cette fonction sert à afficher la montagne.
+ *
+ * @param montagne, un pointeur vers une structure représentant la montagne à afficher.
+ *
+ * @return void.
+ */
 void afficherMontagne(struct Montagne *montagne);
+
+/**
+ * Cette fonction trouve la plus grande hauteur de la montagne.
+ *
+ * @param tabHauteurs, un pointeur vers une structure représentant un tableau de hauteurs.
+ *
+ * @return un entier: la hauteur maximale (plus grande valeur).
+ */
 int trouverHauteur(struct tabHauteurs *hauteur);
+
+/**
+ * Cette fonction vérifie si une position doit contenir de l'eau.
+ *
+ * @param terre, le caractère terre.
+ * @param montagne, un pointeur vers une structure représentant la montagne.
+ * @param i, la position horizontale dans le tableau de caractères.
+ * @param j, la position veritcale de le tableau de caractères.
+ *
+ * @return vrai si la position doit contenir de l'eau, faux sinon.
+ */
 bool devraitContenirEau(char terre, struct Montagne *montagne, int i, int j);
+
+/**
+ * Cette fonction ajoute l'eau dans la montagne.
+ *
+ * @param terre, le caractère terre.
+ * @param eau, le caractère eau.
+ * @param montagne, un pointeur vers la structure représentant la montagne.
+ *
+ * @return void.
+ */
 void ajouterEau(char terre, char eau, struct Montagne *montagne);
-//
-//
-//
-//
-//
-//--------------------------------------
+
 int main(int argc, char *argv[]){
     char eau;
     char terre;
@@ -66,25 +163,19 @@ int main(int argc, char *argv[]){
         }
     }
 }
-//--------------------------------------
-//
-//
-//
-//
-//
-//
+
 bool devraitContenirEau(char terre, struct Montagne *montagne, int i, int j){
     bool droite = false;
     bool gauche = false;
     int copieI = i;
     int copieJ = j;
     if(montagne->contenu[i][j] == CARACTERE_VIDE){ 
-         for(copieI  ; copieI <= montagne->largeur ; copieI++ ){
+         for(; copieI <= montagne->largeur ; copieI++ ){
              if(montagne->contenu[copieI][copieJ] == terre){
              droite = true;
             } 
         }
-        for(i  ; i >= 0 ; i--){
+        for(; i >= 0 ; i--){
              if(montagne->contenu[i][j] == terre){
              gauche = true;
             } 
