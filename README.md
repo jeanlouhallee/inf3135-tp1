@@ -16,9 +16,9 @@ Ce programme prend en entrée deux caractères distincts (un pour la terre, et u
 Voici quelques exemples d'entrées et de sorties:
 
 **Entrée:**
-
+~~~~
 ./tp1 X E 1,2,5,2,0,1,3
-
+~~~~
 **Sortie:**
 ~~~~
 --X----  
@@ -28,9 +28,9 @@ Voici quelques exemples d'entrées et de sorties:
 XXXXEXX   
 ~~~~
 **Entrée:**
-
+~~~~
 ./tp1 X E 1,2,3,4,5,6
-
+~~~~
 **Sortie:**
 ~~~~
 -----X   
@@ -41,9 +41,9 @@ XXXXEXX
 XXXXXX   
 ~~~~
 **Entrée:**
-
+~~~~
 ./tp1 A Z 5,1,1,1,5,9
-
+~~~~
 **Sortie:**
 ~~~~
 -----A  
