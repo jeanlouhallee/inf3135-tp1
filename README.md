@@ -2,7 +2,7 @@
 
 ## Description
 
-Premier TP dans le cadre du cours Construction et maintenance de logicielles.
+Premier TP dans le cadre du cours Construction et maintenance de logiciels.
 INF3135, Université du Québec à Montréal. Remise le 7 octobre à 23h59.
 
 ## Auteur
@@ -15,36 +15,37 @@ Ce programme prend en entrée deux caractères distincts (un pour la terre, et u
 
 Voici quelques exemples d'entrées et de sorties:
 
-Entrée:
+**Entrée:**
 
 ./tp1 X E 1,2,5,2,0,1,3
 
-Sortie:
-
+**Sortie:**
+~~~~
 --X----  
 --X----   
 --XEEEX   
 -XXXEEX   
 XXXXEXX   
-
-Entrée:
+~~~~
+**Entrée:**
 
 ./tp1 X E 1,2,3,4,5,6
 
-Sortie:
-
+**Sortie:**
+~~~~
 -----X   
 ----XX   
 ---XXX   
 --XXXX   
 -XXXXX   
 XXXXXX   
-
-Entrée:
+~~~~
+**Entrée:**
 
 ./tp1 A Z 5,1,1,1,5,9
 
-
+**Sortie:**
+~~~~
 -----A  
 -----A   
 -----A   
@@ -54,7 +55,7 @@ AZZZAA
 AZZZAA  
 AZZZAA   
 AAAAAA   
-
+~~~~
 ## Contenu du projet
 
 *   tp1.c: Fichier source du projet contenant le code.
