@@ -11,7 +11,7 @@ Jean-Lou Hallée (HALJ05129309)
 
 ## Fonctionnement
 
-Ce programme prend en entrée deux caractères distincts (un pour la terre, et un pour l'eau), ainsiqu'une suite de nombres (séparés par des virgules) représentant des hauteurs. La sortie représente l'affichage d'une montagne sous forme de caractères. Les sections où l'eau devrait s'accumuler est également représentée par un caractère.
+Ce programme prend en entrée deux caractères distincts (un pour la terre, et un pour l'eau), ainsi qu'une suite de nombres (séparés par des virgules) représentant des hauteurs. La sortie représente l'affichage d'une montagne sous forme de caractères. Les sections où l'eau devrait s'accumuler est également représentée par un caractère.
 
 *Voici quelques exemples d'entrées et de sorties:*
 
@@ -56,13 +56,14 @@ AZZZAA
 AZZZAA   
 AAAAAA   
 ~~~~
+
 ## Contenu du projet
 
-*   tp1.c: Fichier source du projet contenant le code.
-*   README.md: Fichier décrivant la totalité du projet.
-*   Makefile: Fichier générant la compilation à l'aide de la commande "make" et nettoyage des fichiers non désirés à l'aide de la commande "make clean".
-*   .gitignore: Permet d'ignorer le fichier tp1.out.
-*   test.bats & .gitlab.yml: Ces fichiers permettent d'exécuter automatiquement une suite de tests lors d'un ajout sur Gitlab.
+* `tp1.c`: Fichier source du projet contenant le code.
+* `README.md`: Fichier décrivant la totalité du projet.
+* `Makefile`: Fichier générant la compilation à l'aide de la commande "make" et nettoyage des fichiers non désirés à l'aide de la commande "make clean".
+* `.gitignore`: Permet d'ignorer le fichier tp1.out.
+* `test.bats` & `.gitlab.yml`: Ces fichiers permettent d'exécuter automatiquement une suite de tests lors d'un ajout sur Gitlab.
 
 ## Références
 
