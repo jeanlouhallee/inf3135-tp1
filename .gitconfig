@@ -1,0 +1,24 @@
+[user]
+   name = Jean-Lou
+   email = jeanlou601@hotmail.com
+[color]
+   branch = auto
+   diff = auto
+   interactive = auto
+   status = auto
+[core]
+    editor = vim
+
+[alias]
+   st = status -s
+   co = checkout
+   ci = commit
+   po = push -u origin master
+   br = branch
+   gr = log --graph --full-history --all --color --pretty=tformat:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s%x20%x1b[33m(%an)%x1b[0m"
+[core]
+   precomposeunicode = true
+   editor = vim
+
+[push]
+   default = simple
